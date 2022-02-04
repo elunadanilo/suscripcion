@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
+  rel="stylesheet" />
+
+<div class="content" role="main">
+  <div class="container">
+    <div class="inbox_people">
+      <div class="inbox_chat">
+        <div class="channels">
+          <div class="chat_list">
+            <div class="chat_people">
+              <div class="chat_ib">
+                <div><input type="text" class="form-control" placeholder="Perfil" [(ngModel)]="perfil" /></div>
+                <div><input type="text" class="form-control" placeholder="User" [(ngModel)]="user" /></div>
+                <div><button type="button" (click)="addRoom()" class="btn btn-primary">Login</button></div>
+              </div>
+              <div class="chat_ib">
+                <div><input type="text" class="form-control" placeholder="Ticket" [(ngModel)]="ticket" /></div>
+                <div><button type="button" (click)="sendTicket()" class="btn btn-primary">Ticket</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="mesgs">
+            <div class="msg_history">
+              <li class="message" *ngFor="let message of listTickets">
+                <div *ngIf="message.mensaje.ticket >= 0 then incoming_msg;"></div>
+                <ng-template #incoming_msg>
+                  <div class="incoming_msg">
+                    <div class="card">
+                      <div class="card-body card-body-incoming">
+                        <div>
+                          <p style="color:#c4c4c4">{{message.mensaje.ticket}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
